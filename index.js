@@ -2,7 +2,7 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js") //Put here all Discord classes you need
 
 //Import all files you need
-const id = require("./id.json") //Ypu need id.json to use the token of your bot
+const id = require("./id.json") //You need id.json to use the token of your bot
 const package = require ("./package.json")
 const packageLock = require("./package-lock.json")
 
