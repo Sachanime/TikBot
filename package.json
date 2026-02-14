@@ -1,0 +1,22 @@
+{
+  "name": "discord.js-template",
+  "version": "1.0.0",
+  "description": "A template for developing a full functional Discord bot with Discord.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sachanime/Discord.js-Template.git"
+  },
+  "author": "Sachanime",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sachanime/Discord.js-Template/issues"
+  },
+  "homepage": "https://github.com/Sachanime/Discord.js-Template#readme",
+  "dependencies": {
+    "discord.js": "^14.21.0"
+  }
+}
