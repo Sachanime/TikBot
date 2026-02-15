@@ -8,10 +8,10 @@ const packageLock = require("./package-lock.json")
 
 //Declare all variables and constants you need
 const intentsCode = [53608447] //This code is the code for all Discord Intents
-const intentsBits = [GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] //Put here only Discord Intents you need
+const intentsBits = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] //Put here only Discord Intents you need
 const prefix = "*" //You can choose any prefix you want
 
-const client = new Client({ intents: intentsBits }) //You can use intentsCode or intentsFields
+const client = new Client({ intents: intentsBits }) //You can use intentsCode or intentsBits
 
 client.login(id.token) //The token must be delcared in id.json
 
