@@ -16,7 +16,7 @@ const client = new Client({ intents: intentsBits }) //You can use intentsCode or
 client.login(id.token) //The token must be delcared in id.json
 
 //Put in this event the code you to be executed when your bot is ready
-client.once("ready", () => {
+client.once("clientReady", () => {
 
     console.log("Ready!")
 
