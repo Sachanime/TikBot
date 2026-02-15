@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/Sachanime/TikBot-Notifier#readme",
   "dependencies": {
-    "discord.js": "^14.21.0",
-    "tiktok-app-api": "^1.4.1"
+    "discord.js": "^14.21.0"
   }
 }

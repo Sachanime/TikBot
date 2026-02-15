@@ -1,6 +1,5 @@
 //Import all libs you need
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js") //Put here all Discord classes you need
-tiktok = require("tiktok-app-api")
 
 //Import all files you need
 const id = require("./id.json") //You need id.json to use the token of your bot
@@ -11,8 +10,6 @@ const packageLock = require("./package-lock.json")
 const intentsCode = [53608447] //This code is the code for all Discord Intents
 const intentsBits = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] //Put here only Discord Intents you need
 const prefix = "*" //You can choose any prefix you want
-let tiktokApp
-(async () => { tiktokApp = await tiktok() })()
 
 const client = new Client({ intents: intentsBits }) //You can use intentsCode or intentsBits
 
@@ -26,20 +23,13 @@ client.once("clientReady", () => {
 })
 
 //Put in this event all your textual commands (require Discord Intent "GuildMessages")
-client.on("messageCreate", async (message) => {
+client.on("messageCreate", message => {
 
     if(message.author.bot) { return } //Ignore all messages from other Discord bots
 
     //A simple test textual command (require Discord Privileged Intent "MessageContent")
     if(message.content == prefix + "ping") {
         message.reply("Pong!")
-    }
-
-    if(message.content == prefix + "test"){
-
-        const kaylix = await tiktokApp.getUserByName("madame.kaylix")
-        message.reply("```\n" + kaylix + "\n```")
-
     }
 
 })
