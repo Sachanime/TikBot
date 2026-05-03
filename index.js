@@ -1,48 +1,39 @@
-//Import all libs you need
-const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js") //Put here all Discord classes you need
+const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js")
 
-//Import all files you need
-const id = require("./id.json") //You need id.json to use the token of your bot
+const id = require("./id.json")
 const package = require ("./package.json")
 const packageLock = require("./package-lock.json")
 
-//Declare all variables and constants you need
-const intentsCode = [53608447] //This code is the code for all Discord Intents
+const intentsCode = [53608447]
 const intentsBits = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] //Put here only Discord Intents you need
-const prefix = "*" //You can choose any prefix you want
+const prefix = "*"
 
-const client = new Client({ intents: intentsBits }) //You can use intentsCode or intentsBits
+const client = new Client({ intents: intentsBits })
 
-client.login(id.token) //The token must be delcared in id.json
+client.login(id.token)
 
-//Put in this event the code you to be executed when your bot is ready
 client.once("clientReady", () => {
 
     console.log("Ready!")
 
 })
 
-//Put in this event all your textual commands (require Discord Intent "GuildMessages")
 client.on("messageCreate", message => {
 
-    if(message.author.bot) { return } //Ignore all messages from other Discord bots
+    if(message.author.bot) { return } 
 
-    //A simple test textual command (require Discord Privileged Intent "MessageContent")
     if(message.content == prefix + "ping") {
         message.reply("Pong!")
     }
 
 })
 
-//Put in this event the code of all your slash commands deployed
 client.on("interactionCreate", interaction => {
 
     const { commandName } = interaction
 
-    //Code for slash command "infos"
     if(commandName == "ping") {
 
-        //A Discord Embed to enhance the style of the reply
         const pingEmbed = new EmbedBuilder()
         .setTitle("Ping ?")
         .setColor("Green")
@@ -53,10 +44,8 @@ client.on("interactionCreate", interaction => {
 
     }
 
-    //Code for slash command "infos"
     if(commandName == "infos") {
         
-        //A Discord Embed to enhance the style of the reply
         const infosEmbed = new EmbedBuilder()
         .setTitle("Discord Bot")
         .setColor("Blue")
