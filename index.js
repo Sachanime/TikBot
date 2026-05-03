@@ -7,7 +7,7 @@ const packageLock = require("./package-lock.json")
 
 const intentsCode = [53608447]
 const intentsBits = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
-const tiktokUsername = 'madame.kaylix'
+const tiktokUsername = 'lamatrak_'
 const prefix = "*"
 
 const client = new Client({ intents: intentsBits })
@@ -31,7 +31,7 @@ client.on("messageCreate", message => {
 
 })
 
-client.on("interactionCreate", interaction => {
+client.on("interactionCreate", async interaction => {
 
     const { commandName } = interaction
 
@@ -67,12 +67,14 @@ client.on("interactionCreate", interaction => {
 
     if(commandName == "connect") {
 
-        tiktokConnection.connect()
+        interaction.deferReply()
+
+        await tiktokConnection.connect()
         .then(state => {
-            interaction.reply("Connected to Kaylix TikTok Live \nRoom ID : " + state.roomId)
+            interaction.editReply("Connected to Kaylix TikTok Live \nRoom ID : " + state.roomId)
         })
         .catch(err => {
-            interaction.reply("Failed to connect to Kaylix TikTok Live \nCheck logs for more details")
+            interaction.editReply("Failed to connect to Kaylix TikTok Live \nCheck logs for more details")
             console.error(err)
         })
 
