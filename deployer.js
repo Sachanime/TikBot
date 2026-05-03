@@ -14,7 +14,11 @@ const commands = [
 
     new SlashCommandBuilder()
     .setName("infos")
-    .setDescription("A simple slash command to show bot informations")
+    .setDescription("A simple slash command to show bot informations"),
+
+    new SlashCommandBuilder()
+    .setName("connect")
+    .setDescription("Connect the app with the Kaylix TikTok Live")
 
 ].map(command => command.toJSON())
 

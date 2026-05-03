@@ -1,14 +1,17 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js")
+const { TikTokLiveConnection, WebcastEvent } = require("tiktok-live-connector")
 
 const id = require("./id.json")
 const package = require ("./package.json")
 const packageLock = require("./package-lock.json")
 
 const intentsCode = [53608447]
-const intentsBits = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] //Put here only Discord Intents you need
+const intentsBits = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
+const tiktokUsername = 'madame.kaylix'
 const prefix = "*"
 
 const client = new Client({ intents: intentsBits })
+const tiktokConnection = new TikTokLiveConnection(tiktokUsername)
 
 client.login(id.token)
 
@@ -59,6 +62,19 @@ client.on("interactionCreate", interaction => {
         )
 
         interaction.reply({ embeds: [infosEmbed] })
+
+    }
+
+    if(commandName == "connect") {
+
+        tiktokConnection.connect()
+        .then(state => {
+            interaction.reply("Connected to Kaylix TikTok Live \nRoom ID : " + state.roomId)
+        })
+        .catch(err => {
+            interaction.reply("Failed to connect to Kaylix TikTok Live \nCheck logs for more details")
+            console.error(err)
+        })
 
     }
 
